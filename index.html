@@ -1,0 +1,1963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ByeByes Services | Concrete Pressure Washing &amp; Mobile Auto Detailing – Grants Pass, OR</title>
+  <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    }
+    .ba-slider-range {
+      -webkit-appearance: none;
+      appearance: none;
+      background: transparent;
+      cursor: ew-resize;
+    }
+    .ba-slider-range::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 38px;
+      height: 38px;
+      border-radius: 9999px;
+      background: #0ea5e9;
+      border: 3px solid #ffffff;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+      cursor: ew-resize;
+    }
+    .ba-slider-range::-moz-range-thumb {
+      width: 38px;
+      height: 38px;
+      border-radius: 9999px;
+      background: #0ea5e9;
+      border: 3px solid #ffffff;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.5);
+      cursor: ew-resize;
+    }
+  </style>
+</head>
+<body class="bg-slate-950 text-slate-100 min-h-screen flex flex-col selection:bg-sky-500 selection:text-white">
+
+  <!-- Top Utility / Insurance & Layout Bar -->
+  <div class="bg-black/90 text-slate-300 text-xs border-b border-slate-800/90">
+    <div class="max-w-6xl mx-auto px-4 py-2 flex flex-wrap items-center justify-between gap-2">
+      <div class="flex flex-wrap items-center gap-2 sm:gap-3">
+        <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-500/15 border border-sky-500/30 text-sky-300 font-semibold">
+          <span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span>
+          100% Mobile • Grants Pass &amp; Rogue Valley, OR
+        </span>
+        <span class="hidden lg:inline text-slate-400">
+          $1M/$2M Commercial Liability Insured • $125 Minimum • Solo Owner-Operator
+        </span>
+      </div>
+
+      <!-- Layout Structure Switcher -->
+      <div class="flex items-center gap-2">
+        <span class="text-slate-400 hidden md:inline">View Mode:</span>
+        <div class="inline-flex rounded-lg bg-slate-900 p-0.5 border border-slate-800">
+          <button
+            id="btn-mode-service"
+            type="button"
+            onclick="setSiteMode('service')"
+            class="px-2.5 py-1 rounded-md text-xs font-semibold transition-colors bg-sky-500 text-slate-950"
+          >
+            Layout 1: By Service (Home / Powerwash / Detailing)
+          </button>
+          <button
+            id="btn-mode-topic"
+            type="button"
+            onclick="setSiteMode('topic')"
+            class="px-2.5 py-1 rounded-md text-xs font-semibold transition-colors text-slate-300 hover:text-white"
+          >
+            Layout 2: By Topic (Home / Pricing / Reviews)
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main Navigation Bar (Subtle email address in top bar + Call/Text CTA) -->
+  <header class="sticky top-0 z-30 bg-slate-950/95 backdrop-blur-md border-b border-slate-800 shadow-lg">
+    <div class="max-w-6xl mx-auto px-4 py-3.5 flex items-center justify-between gap-4">
+      <div class="flex items-center gap-3">
+        <button
+          type="button"
+          onclick="navigatePage('home')"
+          class="flex items-center gap-3 text-left group focus:outline-none"
+        >
+          <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-sky-400 via-sky-500 to-blue-700 flex items-center justify-center text-slate-950 font-black text-base shadow-md shadow-sky-500/20 group-hover:scale-105 transition-transform">
+            BB
+          </div>
+          <div>
+            <span id="brand-name-display" class="text-lg font-black tracking-tight text-white block leading-none">
+              ByeByes Services
+            </span>
+            <span class="text-[11px] text-sky-400 font-semibold uppercase tracking-wider block mt-1">
+              Concrete Flatwork &amp; Mobile Detailing
+            </span>
+          </div>
+        </button>
+      </div>
+
+      <!-- Dynamic Navigation Tabs -->
+      <nav id="main-nav-links" class="hidden md:flex items-center gap-1">
+        <!-- Populated dynamically by renderNav() -->
+      </nav>
+
+      <!-- Subtle Top-of-Screen Email + Fast Free Quote CTA -->
+      <div class="flex items-center gap-3">
+        <div class="hidden xl:flex flex-col items-end">
+          <a
+            href="mailto:byebyesservices@gmail.com"
+            class="text-xs text-slate-400 hover:text-sky-400 transition-colors font-medium tracking-tight"
+            title="Email Anthony Vallejo"
+          >
+            byebyesservices@gmail.com
+          </a>
+          <button
+            type="button"
+            onclick="copyEmailToClipboard()"
+            class="text-[11px] text-slate-500 hover:text-slate-300 transition-colors"
+          >
+            Click to copy email
+          </button>
+        </div>
+
+        <a
+          href="tel:6575046183"
+          class="hidden sm:inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-sky-400 text-xs font-bold transition-colors"
+        >
+          <span>(657) 504-6183</span>
+        </a>
+
+        <button
+          type="button"
+          onclick="openQuoteModal('General Inquiry')"
+          class="px-4 py-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs sm:text-sm font-extrabold shadow-md shadow-sky-500/20 transition-colors"
+        >
+          Request Free Quote
+        </button>
+
+        <button
+          id="mobile-menu-btn"
+          type="button"
+          onclick="toggleMobileMenu()"
+          aria-label="Toggle Menu"
+          class="md:hidden p-2 rounded-lg text-slate-300 hover:bg-slate-800"
+        >
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Menu Drawer -->
+    <div id="mobile-menu-drawer" class="hidden md:hidden border-t border-slate-800 bg-slate-900 px-4 pt-2 pb-4 space-y-2">
+      <div id="mobile-nav-links" class="flex flex-col space-y-1"></div>
+      <div class="pt-2 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+        <a href="mailto:byebyesservices@gmail.com" class="hover:text-sky-400">byebyesservices@gmail.com</a>
+        <a href="tel:6575046183" class="font-bold text-sky-400">Call/Text: (657) 504-6183</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Promotional Banner -->
+  <div class="bg-gradient-to-r from-sky-900/50 via-blue-900/40 to-slate-900 border-b border-sky-500/20">
+    <div class="max-w-6xl mx-auto px-4 py-2.5 flex flex-wrap items-center justify-between gap-2 text-xs">
+      <div class="flex items-center gap-2">
+        <span class="px-2 py-0.5 rounded bg-amber-400 text-slate-950 font-black uppercase tracking-wider text-[10px]">
+          $20 Off Promo
+        </span>
+        <span class="text-slate-200 font-medium">
+          New Client / Bundle Discount: Save <strong>$20 Off</strong> when bundling a patio/sidewalk or booking your first service!
+        </span>
+      </div>
+      <a
+        href="tel:6575046183"
+        class="text-sky-400 hover:text-sky-300 font-bold underline"
+      >
+        Text Driveway or Vehicle Photos to (657) 504-6183 →
+      </a>
+    </div>
+  </div>
+
+  <!-- Main Content Area -->
+  <main class="flex-1">
+
+    <!-- ==================== PAGE: HOME ==================== -->
+    <section id="page-home" class="space-y-16 pb-16">
+      <!-- Hero Banner -->
+      <div class="relative overflow-hidden bg-gradient-to-b from-slate-900 via-slate-950 to-slate-950 border-b border-slate-800/80">
+        <div class="max-w-6xl mx-auto px-4 py-12 md:py-20 grid md:grid-cols-12 gap-10 items-center">
+          <div class="md:col-span-7 space-y-6">
+            <div class="inline-flex flex-wrap items-center gap-2 px-3 py-1 rounded-full bg-slate-900 border border-sky-500/40 text-sky-400 text-xs font-bold">
+              <span>Grants Pass &amp; Rogue Valley • 100% Mobile Service</span>
+            </div>
+            <h1 class="text-3xl sm:text-5xl font-black tracking-tight leading-tight text-white">
+              Commercial-Grade Concrete Pressure Washing &amp; Mobile Auto Detailing
+            </h1>
+            <p class="text-slate-300 text-base sm:text-lg leading-relaxed max-w-2xl">
+              Owned and operated personally by <strong class="text-white">Anthony Vallejo</strong>. We bring commercial 15-inch rotary concrete cleaning and clear-coat-safe mobile auto detailing directly to your home or driveway—backed by $1M/$2M commercial liability insurance and upfront flat-rate pricing.
+            </p>
+
+            <!-- Primary Call-To-Action Buttons per Spec -->
+            <div class="flex flex-wrap items-center gap-3 pt-1">
+              <a
+                href="tel:6575046183"
+                class="px-5 py-3.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-black text-sm shadow-lg shadow-sky-500/25 transition-all inline-flex items-center gap-2"
+              >
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
+                <span>Call or Text (657) 504-6183 for a Fast Free Quote</span>
+              </a>
+              <button
+                type="button"
+                onclick="openQuoteModal('Driveway Pressure Washing')"
+                class="px-5 py-3.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-white font-bold text-sm border border-slate-700 transition-all"
+              >
+                Get an Instant Estimate
+              </button>
+              <button
+                type="button"
+                onclick="handlePrimaryServiceExplore()"
+                class="px-4 py-3 rounded-xl bg-slate-900/80 hover:bg-slate-800 text-slate-300 font-semibold text-xs border border-slate-800 transition-all"
+              >
+                Explore Services &amp; Before/Afters
+              </button>
+            </div>
+
+            <!-- Trust & Equipment Pillars -->
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-5 border-t border-slate-800">
+              <div>
+                <div class="text-lg sm:text-xl font-black text-sky-400">$125 Min</div>
+                <div class="text-xs text-slate-400">Up to 400 sq. ft. Flatwork</div>
+              </div>
+              <div>
+                <div class="text-lg sm:text-xl font-black text-sky-400">$1M / $2M</div>
+                <div class="text-xs text-slate-400">Commercial Liability Insured</div>
+              </div>
+              <div>
+                <div class="text-lg sm:text-xl font-black text-sky-400">3,400 PSI</div>
+                <div class="text-xs text-slate-400">15" Rotary Surface Cleaner</div>
+              </div>
+              <div>
+                <div class="text-lg sm:text-xl font-black text-sky-400">Solo Owner</div>
+                <div class="text-xs text-slate-400">Anthony Performs Every Job</div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Visual Work Showcase Card in Hero -->
+          <div class="md:col-span-5">
+            <div class="bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-2xl space-y-4">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold uppercase tracking-wider text-sky-400">Zero "Zebra Striping" Finish</span>
+                <span class="text-xs text-slate-400">@byebyesservices</span>
+              </div>
+              <!-- Custom SVG Split Preview -->
+              <div class="rounded-xl overflow-hidden border border-slate-800 bg-slate-950">
+                <svg viewBox="0 0 480 260" class="w-full h-auto block" role="img" aria-label="Before and after driveway rotary surface wash illustration">
+                  <defs>
+                    <linearGradient id="dirtyConcrete" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#2c3329" />
+                      <stop offset="50%" stop-color="#1e241b" />
+                      <stop offset="100%" stop-color="#141812" />
+                    </linearGradient>
+                    <linearGradient id="cleanConcrete" x1="0" y1="0" x2="1" y2="1">
+                      <stop offset="0%" stop-color="#e2e8f0" />
+                      <stop offset="100%" stop-color="#cbd5e1" />
+                    </linearGradient>
+                  </defs>
+                  <!-- Left Side: Dirty/Mossy Driveway -->
+                  <rect x="0" y="0" width="240" height="260" fill="url(#dirtyConcrete)" />
+                  <circle cx="55" cy="70" r="32" fill="#365314" opacity="0.55" />
+                  <circle cx="150" cy="140" r="48" fill="#1a2e05" opacity="0.65" />
+                  <circle cx="90" cy="200" r="38" fill="#3f6212" opacity="0.5" />
+                  <line x1="0" y1="130" x2="240" y2="130" stroke="#0f172a" stroke-width="2" opacity="0.7" />
+                  <line x1="120" y1="0" x2="120" y2="260" stroke="#0f172a" stroke-width="2" opacity="0.7" />
+                  <!-- Right Side: Clean Bright Concrete -->
+                  <rect x="240" y="0" width="240" height="260" fill="url(#cleanConcrete)" />
+                  <line x1="240" y1="130" x2="480" y2="130" stroke="#94a3b8" stroke-width="2" opacity="0.5" />
+                  <line x1="360" y1="0" x2="360" y2="260" stroke="#94a3b8" stroke-width="2" opacity="0.5" />
+                  <!-- Center Spray Wand Beam -->
+                  <line x1="240" y1="0" x2="240" y2="260" stroke="#38bdf8" stroke-width="4" />
+                  <!-- Badges -->
+                  <rect x="14" y="14" width="118" height="26" rx="6" fill="#090d16" opacity="0.9" />
+                  <text x="73" y="31" text-anchor="middle" fill="#f8fafc" font-size="10" font-weight="700">BEFORE: PNW MOSS</text>
+                  <rect x="338" y="14" width="128" height="26" rx="6" fill="#0284c7" />
+                  <text x="402" y="31" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="700">AFTER: 15" ROTARY</text>
+                </svg>
+              </div>
+              <div class="flex items-center justify-between text-xs text-slate-300">
+                <span>DeWalt 3,400 PSI + 10% SH Biocide Post-Treat</span>
+                <button
+                  type="button"
+                  onclick="navigateToReviewsOrPowerwash()"
+                  class="text-sky-400 hover:text-sky-300 font-bold underline"
+                >
+                  Interactive Sliders →
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 3 Core Value Propositions Section -->
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-xs font-bold uppercase tracking-wider text-sky-400">Why Choose ByeByes Services</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white mt-1">
+            Built on Precision Equipment &amp; Solo Accountability
+          </h2>
+          <p class="text-slate-400 text-sm sm:text-base mt-2">
+            Every residential driveway and vehicle is serviced personally by owner Anthony Vallejo.
+          </p>
+        </div>
+
+        <div class="grid md:grid-cols-3 gap-6">
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-sky-500/15 border border-sky-500/30 text-sky-400 flex items-center justify-center font-black">
+              01
+            </div>
+            <h3 class="text-lg font-bold text-white">Solo-Operator Accountability</h3>
+            <p class="text-sm text-slate-400 leading-relaxed">
+              Owner Anthony Vallejo performs every job personally—never handed off to rushed subcontracted crews. You get direct communication from estimate to final walkthrough.
+            </p>
+          </div>
+
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-sky-500/15 border border-sky-500/30 text-sky-400 flex items-center justify-center font-black">
+              02
+            </div>
+            <h3 class="text-lg font-bold text-white">Commercial-Grade Equipment</h3>
+            <p class="text-sm text-slate-400 leading-relaxed">
+              Our 15-inch rotary surface cleaner paired with a 3,400 PSI / 2.5 GPM commercial gas unit eliminates "zebra striping" on concrete, while #4.0/#4.5 low-pressure orifice nozzles (1,200–1,900 PSI) protect vehicle clear coats.
+            </p>
+          </div>
+
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 space-y-3">
+            <div class="w-10 h-10 rounded-xl bg-sky-500/15 border border-sky-500/30 text-sky-400 flex items-center justify-center font-black">
+              03
+            </div>
+            <h3 class="text-lg font-bold text-white">Upfront, Transparent Pricing</h3>
+            <p class="text-sm text-slate-400 leading-relaxed">
+              Clear flat-rate tiers by driveway square footage and vehicle size with zero hidden fees. Text a photo of your driveway or car to (657) 504-6183 for a fast estimate.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Core Services Overview Cards -->
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="grid md:grid-cols-2 gap-6">
+          <!-- Service Card 1: Concrete Pressure Washing -->
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 sm:p-8 shadow-lg flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-sky-500/15 text-sky-400 text-xs font-bold">
+                Ground-Level Residential Flatwork
+              </div>
+              <h3 class="text-2xl font-black text-white">Residential Concrete Pressure Washing</h3>
+              <p class="text-slate-300 text-sm leading-relaxed">
+                Complete restoration for driveways, sidewalks, walkways, patios, porches, and curbing. We pre-treat organic moss and automotive stains, rotary-clean with zero zebra stripes, and offer downstream 10% SH biocide post-treatments.
+              </p>
+              <ul class="space-y-2 text-sm text-slate-300 pt-2">
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+                  <strong>$125 Minimum Trip Charge</strong> (covers up to 400 sq. ft.)
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+                  <strong>$0.20 – $0.30 / sq. ft.</strong> standard flatwork rate
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-sky-400"></span>
+                  Biocide SH post-treatment, ZEP oil degreaser &amp; rust remediation
+                </li>
+              </ul>
+            </div>
+            <div class="pt-6 mt-6 border-t border-slate-800 flex items-center justify-between">
+              <span id="home-pw-badge" class="text-xs font-semibold text-slate-400">$125 Min • 2-Car Driveways $135–$175</span>
+              <button
+                type="button"
+                onclick="openServiceDetail('powerwash')"
+                class="text-sm font-bold text-sky-400 hover:text-sky-300"
+              >
+                View Powerwashing Details →
+              </button>
+            </div>
+          </div>
+
+          <!-- Service Card 2: Mobile Auto Detailing -->
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 sm:p-8 shadow-lg flex flex-col justify-between">
+            <div class="space-y-4">
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-blue-500/15 text-blue-400 text-xs font-bold">
+                100% Mobile Driveway Service
+              </div>
+              <h3 class="text-2xl font-black text-white">Mobile Auto Detailing Packages</h3>
+              <p class="text-slate-300 text-sm leading-relaxed">
+                Paint-safe pH-balanced snow foam pre-soak, two-bucket microfiber contact wash, low-pressure (#4.0/#4.5 nozzle) clear-coat-safe rinse, and thorough interior cabin resets performed right in your driveway.
+              </p>
+              <ul class="space-y-2 text-sm text-slate-300 pt-2">
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                  <strong>Exterior Foam Wash &amp; Seal:</strong> $75–$130 by vehicle size
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                  <strong>Full Exterior + Express Interior:</strong> $140–$220 by vehicle size
+                </li>
+                <li class="flex items-center gap-2">
+                  <span class="w-2 h-2 rounded-full bg-blue-400"></span>
+                  Pet hair/mud extraction ($40–$60) &amp; leather conditioning ($35)
+                </li>
+              </ul>
+            </div>
+            <div class="pt-6 mt-6 border-t border-slate-800 flex items-center justify-between">
+              <span id="home-dt-badge" class="text-xs font-semibold text-slate-400">Sedans from $75 • Full In+Out from $140</span>
+              <button
+                type="button"
+                onclick="openServiceDetail('detailing')"
+                class="text-sm font-bold text-blue-400 hover:text-blue-300"
+              >
+                View Detailing Details →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Instant Quote Calculator (Both Concrete & Auto Detailing) -->
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 sm:p-8 shadow-xl space-y-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-5">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-sky-400">Interactive Price Estimator</span>
+              <h2 class="text-2xl font-black text-white mt-1">Calculate Your Instant Estimate</h2>
+              <p class="text-sm text-slate-400 mt-1">
+                Select your driveway size or vehicle package below, or text photos to <a href="tel:6575046183" class="text-sky-400 font-bold underline">(657) 504-6183</a> for an exact quote.
+              </p>
+            </div>
+            <div class="inline-flex rounded-xl bg-slate-950 p-1 border border-slate-800 self-start">
+              <button
+                id="calc-tab-pw"
+                type="button"
+                onclick="switchCalcTab('pw')"
+                class="px-3.5 py-2 rounded-lg text-xs font-bold bg-sky-500 text-slate-950"
+              >
+                Concrete Flatwork
+              </button>
+              <button
+                id="calc-tab-dt"
+                type="button"
+                onclick="switchCalcTab('dt')"
+                class="px-3.5 py-2 rounded-lg text-xs font-bold text-slate-400 hover:text-white"
+              >
+                Mobile Auto Detailing
+              </button>
+            </div>
+          </div>
+
+          <!-- Concrete Calculator View -->
+          <div id="calc-view-pw" class="grid md:grid-cols-12 gap-6 items-start">
+            <div class="md:col-span-7 space-y-4">
+              <div>
+                <label for="calc-pw-tier" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+                  1. Select Driveway / Flatwork Size Tier
+                </label>
+                <select
+                  id="calc-pw-tier"
+                  onchange="updateCalculator()"
+                  class="w-full rounded-xl bg-slate-950 border border-slate-700 px-3.5 py-2.5 text-sm text-white focus:border-sky-500 focus:outline-none"
+                >
+                  <option value="0">Compact 1-Car Driveway (200 – 400 sq. ft.) — $125 Flat Minimum</option>
+                  <option value="1" selected>Standard 2-Car Driveway (450 – 650 sq. ft.) — $135 – $175</option>
+                  <option value="2">Expanded 2-Car / 3-Car Driveway (700 – 950 sq. ft.) — $185 – $250</option>
+                  <option value="3">Large Multi-Bay Driveway (1,000 – 1,400 sq. ft.) — $260 – $375</option>
+                  <option value="4">Extended / Rural Driveway (1,500+ sq. ft.) — $300+ ($0.20–$0.30/sq. ft.)</option>
+                </select>
+              </div>
+
+              <div>
+                <span class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+                  2. Optional Concrete Chemical Treatments &amp; Promos
+                </span>
+                <div class="grid sm:grid-cols-2 gap-2.5">
+                  <label class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-950 border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input id="addon-sh" type="checkbox" onchange="updateCalculator()" class="mt-1 accent-sky-500" />
+                    <span class="text-xs">
+                      <strong class="text-white block">Post-Wash Biocide / 10% SH ($25–$35)</strong>
+                      <span class="text-slate-400">Kills deep moss/algae spores &amp; delays regrowth</span>
+                    </span>
+                  </label>
+                  <label class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-950 border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input id="addon-oil" type="checkbox" onchange="updateCalculator()" class="mt-1 accent-sky-500" />
+                    <span class="text-xs">
+                      <strong class="text-white block">Oil &amp; Grease Remediation ($25–$50)</strong>
+                      <span class="text-slate-400">Commercial ZEP degreaser hot-scrub</span>
+                    </span>
+                  </label>
+                  <label class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-950 border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input id="addon-rust" type="checkbox" onchange="updateCalculator()" class="mt-1 accent-sky-500" />
+                    <span class="text-xs">
+                      <strong class="text-white block">Rust &amp; Fertilizer Removal ($40–$75)</strong>
+                      <span class="text-slate-400">Dissolves orange rust rings &amp; fertilizer stains</span>
+                    </span>
+                  </label>
+                  <label class="flex items-start gap-2.5 p-3 rounded-xl bg-sky-950/40 border border-sky-500/40 cursor-pointer">
+                    <input id="addon-promo-pw" type="checkbox" onchange="updateCalculator()" class="mt-1 accent-sky-500" />
+                    <span class="text-xs">
+                      <strong class="text-sky-300 block">New Client / Bundle Promo (-$20 Off)</strong>
+                      <span class="text-slate-400">First-time service or patio/sidewalk bundle</span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="md:col-span-5 bg-slate-950 rounded-2xl border border-slate-800 p-5 space-y-4">
+              <div class="text-xs font-bold uppercase tracking-wider text-sky-400">Estimated Price Range</div>
+              <div id="calc-pw-result" class="text-3xl font-black text-white">$135 – $175</div>
+              <p id="calc-pw-summary" class="text-xs text-slate-400 leading-relaxed">
+                Standard 2-Car Driveway (450 – 650 sq. ft.) • Includes inspection, pre-treat, 15" rotary surface cleaning &amp; high-volume rinse.
+              </p>
+              <button
+                type="button"
+                onclick="bookCalculatedQuote('pw')"
+                class="w-full py-3 px-4 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 font-black text-xs uppercase tracking-wider transition-colors"
+              >
+                Lock In This Estimate →
+              </button>
+            </div>
+          </div>
+
+          <!-- Auto Detailing Calculator View -->
+          <div id="calc-view-dt" class="hidden grid md:grid-cols-12 gap-6 items-start">
+            <div class="md:col-span-7 space-y-4">
+              <div class="grid sm:grid-cols-2 gap-3">
+                <div>
+                  <label for="calc-dt-size" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+                    1. Vehicle Size Tier
+                  </label>
+                  <select
+                    id="calc-dt-size"
+                    onchange="updateCalculator()"
+                    class="w-full rounded-xl bg-slate-950 border border-slate-700 px-3.5 py-2.5 text-sm text-white focus:border-sky-500 focus:outline-none"
+                  >
+                    <option value="0">Sedans &amp; Coupes</option>
+                    <option value="1" selected>Mid-Size SUVs &amp; Small Trucks</option>
+                    <option value="2">Full-Size Trucks, 3-Row SUVs &amp; Vans</option>
+                  </select>
+                </div>
+                <div>
+                  <label for="calc-dt-pkg" class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+                    2. Detailing Package
+                  </label>
+                  <select
+                    id="calc-dt-pkg"
+                    onchange="updateCalculator()"
+                    class="w-full rounded-xl bg-slate-950 border border-slate-700 px-3.5 py-2.5 text-sm text-white focus:border-sky-500 focus:outline-none"
+                  >
+                    <option value="ext">Package 1: Exterior Foam Wash &amp; Seal</option>
+                    <option value="full" selected>Package 2: Full Exterior + Express Interior</option>
+                  </select>
+                </div>
+              </div>
+
+              <div>
+                <span class="block text-xs font-bold uppercase tracking-wider text-slate-300 mb-2">
+                  3. Optional Auto Detailing Add-Ons
+                </span>
+                <div class="grid sm:grid-cols-2 gap-2.5">
+                  <label class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-950 border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input id="addon-pethair" type="checkbox" onchange="updateCalculator()" class="mt-1 accent-sky-500" />
+                    <span class="text-xs">
+                      <strong class="text-white block">Excessive Pet Hair / Heavy Sand &amp; Mud ($40–$60)</strong>
+                      <span class="text-slate-400">Deep extraction &amp; brushing for heavily soiled cabins</span>
+                    </span>
+                  </label>
+                  <label class="flex items-start gap-2.5 p-3 rounded-xl bg-slate-950 border border-slate-800 cursor-pointer hover:border-slate-700">
+                    <input id="addon-leather" type="checkbox" onchange="updateCalculator()" class="mt-1 accent-sky-500" />
+                    <span class="text-xs">
+                      <strong class="text-white block">Leather Cleaning &amp; Conditioning ($35)</strong>
+                      <span class="text-slate-400">Gentle pH-safe clean &amp; UV-protective conditioning</span>
+                    </span>
+                  </label>
+                </div>
+              </div>
+            </div>
+
+            <div class="md:col-span-5 bg-slate-950 rounded-2xl border border-slate-800 p-5 space-y-4">
+              <div class="text-xs font-bold uppercase tracking-wider text-blue-400">Estimated Package Range</div>
+              <div id="calc-dt-result" class="text-3xl font-black text-white">$165 – $185</div>
+              <p id="calc-dt-summary" class="text-xs text-slate-400 leading-relaxed">
+                Mid-Size SUVs &amp; Small Trucks • Full Exterior + Express Interior (Snow foam pre-soak, 2-bucket contact wash, 1,200–1,900 PSI safe rinse, full vacuum, dash/console/door jambs &amp; glass).
+              </p>
+              <button
+                type="button"
+                onclick="bookCalculatedQuote('dt')"
+                class="w-full py-3 px-4 rounded-xl bg-blue-500 hover:bg-blue-400 text-slate-950 font-black text-xs uppercase tracking-wider transition-colors"
+              >
+                Book This Detailing Package →
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4-Step Concrete Cleaning Process ("How It Works" Section) -->
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="text-center max-w-2xl mx-auto mb-10">
+          <span class="text-xs font-bold uppercase tracking-wider text-sky-400">How It Works</span>
+          <h2 class="text-2xl sm:text-3xl font-black text-white mt-1">
+            Our 4-Step Concrete Restoration Process
+          </h2>
+          <p class="text-slate-400 text-sm mt-2">
+            Engineered for Pacific Northwest moss, lichen, and deeply embedded driveway grime.
+          </p>
+        </div>
+
+        <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-5">
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-5 space-y-2.5">
+            <span class="text-xs font-black text-sky-400 uppercase tracking-wider">Step 1</span>
+            <h3 class="text-base font-bold text-white">Site &amp; Surface Inspection</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Satellite or on-site square footage measurement, concrete integrity check, drainage assessment, and water flow (GPM) verification.
+            </p>
+          </div>
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-5 space-y-2.5">
+            <span class="text-xs font-black text-sky-400 uppercase tracking-wider">Step 2</span>
+            <h3 class="text-base font-bold text-white">Targeted Pre-Treatment</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Commercial ZEP degreaser application on oil spots and organic pre-soak on heavy Pacific Northwest moss and lichen.
+            </p>
+          </div>
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-5 space-y-2.5">
+            <span class="text-xs font-black text-sky-400 uppercase tracking-wider">Step 3</span>
+            <h3 class="text-base font-bold text-white">Rotary Surface Cleaning</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Uniform high-pressure pass using a DeWalt 3,400 PSI / 2.5 GPM commercial gas unit paired with a 15-inch Rotary Surface Cleaner for a streak-free finish.
+            </p>
+          </div>
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-5 space-y-2.5">
+            <span class="text-xs font-black text-sky-400 uppercase tracking-wider">Step 4</span>
+            <h3 class="text-base font-bold text-white">High-Volume Rinse &amp; Post-Treat</h3>
+            <p class="text-xs text-slate-400 leading-relaxed">
+              Complete debris flush off the property, followed by optional 10% Sodium Hypochlorite biocide application to keep the slab bright longer.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- About Me / Owner Bio + Licensing & Insurance Section -->
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 sm:p-10 shadow-lg grid md:grid-cols-12 gap-8 items-center">
+          <div class="md:col-span-4 flex flex-col items-center text-center">
+            <div class="w-28 h-28 rounded-2xl bg-gradient-to-br from-sky-500 to-blue-800 text-slate-950 flex flex-col items-center justify-center shadow-lg">
+              <span class="text-3xl font-black">AV</span>
+              <span class="text-[11px] font-bold uppercase tracking-wider mt-1">Owner-Operator</span>
+            </div>
+            <h3 class="font-black text-lg text-white mt-4">Anthony Vallejo</h3>
+            <p class="text-xs text-sky-400 font-semibold">ByeByes Services • Sole Proprietorship</p>
+            <p class="text-xs text-slate-400 mt-1">Grants Pass &amp; Rogue Valley, OR</p>
+          </div>
+
+          <div class="md:col-span-8 space-y-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-400">Owner &amp; Licensing Profile</span>
+            <h2 class="text-2xl font-black text-white">
+              Fully Insured, Owner-Operated Mobile Service
+            </h2>
+            <p id="about-me-copy" class="text-slate-300 text-sm sm:text-base leading-relaxed">
+              Hi, I'm Anthony Vallejo, owner and sole operator of ByeByes Services in Grants Pass, Oregon. When you schedule a pressure washing or mobile detailing appointment, I arrive at your property personally with commercial-grade equipment. Customers can call or text photos of their driveway or vehicle directly to (657) 504-6183 for a fast, no-pressure estimate.
+            </p>
+            <div class="grid sm:grid-cols-3 gap-3 pt-2">
+              <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
+                <div class="text-xs font-bold text-sky-400">$1M / $2M Liability Policy</div>
+                <div class="text-xs text-slate-400 mt-1">$1,000,000 General Liability / $2,000,000 Aggregate commercial coverage + $2,500 inland marine equipment policy.</div>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
+                <div class="text-xs font-bold text-sky-400">Oregon CCB Compliant</div>
+                <div class="text-xs text-slate-400 mt-1">Operates within Oregon CCB exemptions covering ground-level residential flatwork concrete cleaning &amp; mobile auto detailing.</div>
+              </div>
+              <div class="p-3.5 rounded-xl bg-slate-950 border border-slate-800">
+                <div class="text-xs font-bold text-sky-400">100% Mobile to Your Home</div>
+                <div class="text-xs text-slate-400 mt-1">We come directly to your driveway anywhere in Grants Pass and the surrounding Rogue Valley.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Equipment & Customer Requirements FAQ Section -->
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 sm:p-8 space-y-6">
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-sky-400">Equipment &amp; Customer FAQ</span>
+              <h2 class="text-xl sm:text-2xl font-black text-white mt-1">
+                Hardware Specifications &amp; On-Site Requirements
+              </h2>
+            </div>
+            <button
+              type="button"
+              onclick="openQuoteModal('Upcoming Service Inquiry')"
+              class="self-start md:self-auto px-4 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-sky-400 border border-slate-700 text-xs font-bold transition-colors"
+            >
+              Ask About Upcoming Services
+            </button>
+          </div>
+
+          <div class="grid md:grid-cols-2 gap-4">
+            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-1.5">
+              <h3 class="text-sm font-bold text-white">Do you need a water hookup on-site?</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Yes—as a 100% mobile service, ByeByes Services connects directly to your standard outdoor residential water spigot on-site. We verify water flow (GPM) and drainage during our pre-wash inspection.
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-1.5">
+              <h3 class="text-sm font-bold text-white">What commercial pressure washing hardware do you run?</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                We run a DeWalt 3,400 PSI / 2.5 GPM commercial gas pressure washer paired with a 15-inch rotary surface cleaner (to eliminate wand zebra striping) and a General Pump 100775 downstream chemical injector.
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-1.5">
+              <h3 class="text-sm font-bold text-white">Is pressure washing safe for my car's paint and clear coat?</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Absolutely. For mobile auto detailing, we step pressure down to a clear-coat-safe 1,200 – 1,900 PSI using dedicated 1/4-inch quick-connect #4.0 and #4.5 low-pressure orifice nozzles alongside a pH-balanced snow foam pre-soak and two-bucket microfiber wash.
+              </p>
+            </div>
+            <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 space-y-1.5">
+              <h3 class="text-sm font-bold text-white">How can I get the fastest price quote?</h3>
+              <p class="text-xs text-slate-400 leading-relaxed">
+                Call or text <a href="tel:6575046183" class="text-sky-400 font-semibold underline">(657) 504-6183</a> with a couple of photos of your driveway or vehicle! We can also measure driveway square footage via satellite or on-site inspection.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Home Page Customer Reviews Preview -->
+      <div class="max-w-6xl mx-auto px-4">
+        <div class="flex items-center justify-between mb-6">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-sky-400">Client Feedback</span>
+            <h2 class="text-2xl font-black text-white mt-0.5">Recent Grants Pass &amp; Rogue Valley Highlights</h2>
+          </div>
+          <button
+            type="button"
+            onclick="navigateToReviewsOrPowerwash()"
+            class="text-sm font-bold text-sky-400 hover:text-sky-300"
+          >
+            See All Reviews &amp; Before/Afters →
+          </button>
+        </div>
+        <div class="grid md:grid-cols-2 gap-6">
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 shadow-sm">
+            <div class="flex items-center gap-1 text-amber-400 text-sm">★★★★★</div>
+            <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+              "Anthony pressure washed our concrete driveway with his rotary surface cleaner and post-treatment—zero streaks and all the slippery green moss is completely gone."
+            </p>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+              <span class="font-bold text-white">Shelly • Grants Pass Homeowner</span>
+              <span>Driveway Pressure Washing</span>
+            </div>
+          </div>
+          <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 shadow-sm">
+            <div class="flex items-center gap-1 text-amber-400 text-sm">★★★★★</div>
+            <p class="text-slate-300 text-sm mt-3 leading-relaxed">
+              "Booked the Full Exterior + Express Interior detail right in our driveway. The snow foam wash, wheel barrel clean, and interior vacuum left our SUV looking showroom new."
+            </p>
+            <div class="mt-4 pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+              <span class="font-bold text-white">Repeat Residential Client • Rogue Valley</span>
+              <span>Full Exterior + Express Interior</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PAGE: POWERWASHING ==================== -->
+    <section id="page-powerwash" class="hidden max-w-6xl mx-auto px-4 py-12 space-y-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-sky-400">Ground-Level Residential Flatwork</span>
+          <h1 class="text-3xl font-black text-white mt-1">Residential Concrete Pressure Washing</h1>
+          <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
+            Driveways, sidewalks, walkways, patios, porches, and curbing cleaned with a DeWalt 3,400 PSI / 2.5 GPM commercial unit and 15-inch Rotary Surface Cleaner. Minimum Trip / Base Charge: <strong class="text-white">$125 (up to 400 sq. ft.)</strong> • Standard Rate: <strong class="text-white">$0.20 – $0.30 / sq. ft.</strong>
+          </p>
+        </div>
+        <button
+          type="button"
+          onclick="openQuoteModal('Driveway / Concrete Powerwashing')"
+          class="self-start md:self-auto px-5 py-2.5 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 text-sm font-black shadow-sm transition-colors"
+        >
+          Book Powerwashing
+        </button>
+      </div>
+
+      <!-- Interactive Before & After Slider: Powerwashing -->
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 shadow-sm space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-lg font-bold text-white">Interactive Concrete Before &amp; After Comparison</h2>
+            <p class="text-xs text-slate-400">Drag the slider left and right to compare heavy PNW moss buildup vs. 15-inch rotary surface cleaning.</p>
+          </div>
+          <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-sky-500/20 text-sky-300">
+            Drag Slider to Compare
+          </span>
+        </div>
+
+        <div class="relative rounded-xl overflow-hidden border border-slate-800 select-none h-64 sm:h-80 bg-slate-950">
+          <!-- AFTER Layer -->
+          <div class="absolute inset-0 flex items-center justify-center">
+            <svg viewBox="0 0 800 400" class="w-full h-full object-cover" preserveAspectRatio="none">
+              <rect width="800" height="400" fill="#e2e8f0" />
+              <line x1="0" y1="200" x2="800" y2="200" stroke="#94a3b8" stroke-width="3" />
+              <line x1="266" y1="0" x2="266" y2="400" stroke="#94a3b8" stroke-width="3" />
+              <line x1="533" y1="0" x2="533" y2="400" stroke="#94a3b8" stroke-width="3" />
+              <text x="640" y="365" text-anchor="middle" fill="#0f172a" font-size="17" font-weight="800">AFTER: Streak-Free Rotary Finish</text>
+            </svg>
+          </div>
+          <!-- BEFORE Layer -->
+          <div id="pw-before-clip" class="absolute inset-y-0 left-0 overflow-hidden" style="width: 50%;">
+            <svg viewBox="0 0 800 400" class="w-full h-full object-cover" preserveAspectRatio="none">
+              <rect width="800" height="400" fill="#272e25" />
+              <circle cx="140" cy="110" r="85" fill="#273818" opacity="0.75" />
+              <circle cx="380" cy="270" r="110" fill="#1e2912" opacity="0.8" />
+              <circle cx="260" cy="190" r="70" fill="#3f6212" opacity="0.5" />
+              <circle cx="590" cy="140" r="95" fill="#273818" opacity="0.7" />
+              <line x1="0" y1="200" x2="800" y2="200" stroke="#0f172a" stroke-width="3" />
+              <line x1="266" y1="0" x2="266" y2="400" stroke="#0f172a" stroke-width="3" />
+              <line x1="533" y1="0" x2="533" y2="400" stroke="#0f172a" stroke-width="3" />
+              <text x="170" y="365" text-anchor="middle" fill="#f8fafc" font-size="17" font-weight="800">BEFORE: Moss, Algae &amp; Oil Stains</text>
+            </svg>
+          </div>
+          <div id="pw-divider-line" class="absolute inset-y-0 w-1 bg-sky-400 pointer-events-none" style="left: 50%;"></div>
+          <input
+            id="pw-slider-input"
+            type="range"
+            min="5"
+            max="95"
+            value="50"
+            aria-label="Powerwashing before and after comparison slider"
+            oninput="updateBeforeAfter('pw', this.value)"
+            class="ba-slider-range absolute inset-0 w-full h-full m-0"
+          />
+        </div>
+      </div>
+
+      <!-- Driveway & Flatwork Pricing Tiers -->
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 shadow-sm space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-xl font-black text-white">Driveway &amp; Flatwork Pricing Tiers</h2>
+            <p class="text-xs text-slate-400">Minimum Trip / Base Charge: $125 (up to 400 sq. ft.) • Standard Rate: $0.20 – $0.30 per sq. ft.</p>
+          </div>
+          <button
+            type="button"
+            onclick="toggleRateEditor()"
+            class="text-xs font-bold px-3 py-1.5 rounded-lg border border-slate-700 hover:bg-slate-800 text-slate-300"
+          >
+            Customize Rates
+          </button>
+        </div>
+        <div id="pw-pricing-grid" class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4">
+          <!-- Populated by renderPricingCards() -->
+        </div>
+      </div>
+
+      <!-- Concrete Add-Ons & Chemical Treatments -->
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 shadow-sm space-y-4">
+        <h2 class="text-xl font-black text-white">Concrete Add-Ons &amp; Chemical Treatments</h2>
+        <div class="overflow-x-auto">
+          <table class="w-full text-left border-collapse text-sm">
+            <thead>
+              <tr class="border-b border-slate-800 text-xs uppercase tracking-wider text-slate-400">
+                <th class="py-3 pr-4">Treatment / Add-On</th>
+                <th class="py-3 px-4">Price</th>
+                <th class="py-3 pl-4">Details &amp; Purpose</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-slate-800/70 text-slate-300">
+              <tr>
+                <td class="py-3.5 pr-4 font-bold text-white">Post-Wash Biocide / SH Treatment</td>
+                <td class="py-3.5 px-4 font-black text-sky-400 whitespace-nowrap">$25 – $35</td>
+                <td class="py-3.5 pl-4 text-xs leading-relaxed">10% Sodium Hypochlorite downstream application that kills deep organic moss, algae, and mildew spores to brighten concrete and delay regrowth.</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 pr-4 font-bold text-white">Oil &amp; Grease Stain Remediation</td>
+                <td class="py-3.5 px-4 font-black text-sky-400 whitespace-nowrap">$25 – $50</td>
+                <td class="py-3.5 pl-4 text-xs leading-relaxed">Commercial ZEP degreaser hot-scrub treatment to lift stubborn automotive fluid stains.</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 pr-4 font-bold text-white">Rust &amp; Fertilizer Stain Removal</td>
+                <td class="py-3.5 px-4 font-black text-sky-400 whitespace-nowrap">$40 – $75</td>
+                <td class="py-3.5 pl-4 text-xs leading-relaxed">Targeted chemical treatment to dissolve orange rust rings and fertilizer burns.</td>
+              </tr>
+              <tr>
+                <td class="py-3.5 pr-4 font-bold text-amber-300">New Client / Bundle Promo</td>
+                <td class="py-3.5 px-4 font-black text-amber-400 whitespace-nowrap">$20 Off</td>
+                <td class="py-3.5 pl-4 text-xs leading-relaxed">Promotional discount when bundling a patio/sidewalk or booking a first-time service.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PAGE: AUTO DETAILING ==================== -->
+    <section id="page-detailing" class="hidden max-w-6xl mx-auto px-4 py-12 space-y-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-blue-400">100% Mobile Vehicle Care</span>
+          <h1 class="text-3xl font-black text-white mt-1">Mobile Auto Detailing Packages &amp; Pricing</h1>
+          <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
+            Paint-safe snow foam pre-soak, two-bucket microfiber wash, low-pressure (#4.0 / #4.5 orifice nozzle, 1,200–1,900 PSI) clear-coat-safe rinse, and thorough interior cabin resets right in your driveway.
+          </p>
+        </div>
+        <button
+          type="button"
+          onclick="openQuoteModal('Mobile Auto Detailing')"
+          class="self-start md:self-auto px-5 py-2.5 rounded-xl bg-blue-500 hover:bg-blue-400 text-slate-950 text-sm font-black shadow-sm transition-colors"
+        >
+          Book Auto Detailing
+        </button>
+      </div>
+
+      <!-- Interactive Before & After Slider: Detailing -->
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 shadow-sm space-y-4">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-lg font-bold text-white">Interactive Detailing Before &amp; After Comparison</h2>
+            <p class="text-xs text-slate-400">Drag the slider to compare road grime &amp; brake dust vs. snow foam wash, wheel barrel clean &amp; satin tire dressing.</p>
+          </div>
+          <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-blue-500/20 text-blue-300">
+            Drag Slider to Compare
+          </span>
+        </div>
+
+        <div class="relative rounded-xl overflow-hidden border border-slate-800 select-none h-64 sm:h-80 bg-slate-950">
+          <!-- AFTER Layer -->
+          <div class="absolute inset-0 flex items-center justify-center">
+            <svg viewBox="0 0 800 400" class="w-full h-full object-cover" preserveAspectRatio="none">
+              <rect width="800" height="400" fill="#090d16" />
+              <rect x="80" y="90" width="640" height="200" rx="28" fill="#1d4ed8" />
+              <circle cx="200" cy="290" r="42" fill="#e2e8f0" stroke="#0f172a" stroke-width="10" />
+              <circle cx="600" cy="290" r="42" fill="#e2e8f0" stroke="#0f172a" stroke-width="10" />
+              <line x1="160" y1="120" x2="260" y2="250" stroke="#93c5fd" stroke-width="8" opacity="0.6" />
+              <line x1="420" y1="110" x2="520" y2="250" stroke="#93c5fd" stroke-width="6" opacity="0.5" />
+              <text x="630" y="365" text-anchor="middle" fill="#60a5fa" font-size="17" font-weight="800">AFTER: Foam Wash &amp; Satin Trim</text>
+            </svg>
+          </div>
+          <!-- BEFORE Layer -->
+          <div id="dt-before-clip" class="absolute inset-y-0 left-0 overflow-hidden" style="width: 50%;">
+            <svg viewBox="0 0 800 400" class="w-full h-full object-cover" preserveAspectRatio="none">
+              <rect width="800" height="400" fill="#1e293b" />
+              <rect x="80" y="90" width="640" height="200" rx="28" fill="#475569" />
+              <circle cx="240" cy="230" r="55" fill="#78350f" opacity="0.55" />
+              <circle cx="380" cy="240" r="70" fill="#713f12" opacity="0.5" />
+              <circle cx="200" cy="290" r="42" fill="#78350f" stroke="#0f172a" stroke-width="10" />
+              <circle cx="600" cy="290" r="42" fill="#78350f" stroke="#0f172a" stroke-width="10" />
+              <text x="170" y="365" text-anchor="middle" fill="#fcd34d" font-size="17" font-weight="800">BEFORE: Road Grime &amp; Brake Dust</text>
+            </svg>
+          </div>
+          <div id="dt-divider-line" class="absolute inset-y-0 w-1 bg-blue-400 pointer-events-none" style="left: 50%;"></div>
+          <input
+            id="dt-slider-input"
+            type="range"
+            min="5"
+            max="95"
+            value="50"
+            aria-label="Auto detailing before and after comparison slider"
+            oninput="updateBeforeAfter('dt', this.value)"
+            class="ba-slider-range absolute inset-0 w-full h-full m-0"
+          />
+        </div>
+      </div>
+
+      <!-- Vehicle Size & Package Pricing Matrix -->
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 shadow-sm space-y-5">
+        <div class="flex flex-wrap items-center justify-between gap-2">
+          <div>
+            <h2 class="text-xl font-black text-white">Vehicle Size &amp; Package Pricing Matrix</h2>
+            <p class="text-xs text-slate-400">Clear-coat-safe 1,200 – 1,900 PSI rinse (#4.0 / #4.5 nozzles) • 100% mobile service at your home.</p>
+          </div>
+          <button
+            type="button"
+            onclick="toggleRateEditor()"
+            class="text-xs font-bold px-3 py-1.5 rounded-lg border border-slate-700 hover:bg-slate-800 text-slate-300"
+          >
+            Customize Rates
+          </button>
+        </div>
+        <div id="dt-pricing-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+          <!-- Populated by renderPricingCards() -->
+        </div>
+      </div>
+
+      <!-- Detailed Package Inclusions & Auto Detailing Add-Ons -->
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 space-y-4">
+          <div class="inline-flex px-2.5 py-1 rounded-md bg-sky-500/15 text-sky-400 text-xs font-bold">
+            Package 1 Inclusions
+          </div>
+          <h3 class="text-xl font-black text-white">Exterior Foam Wash &amp; Seal ($75 – $130)</h3>
+          <ul class="space-y-2.5 text-xs sm:text-sm text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="text-sky-400 font-bold">✓</span>
+              <span>Deep wheel face, lug nut, and tire barrel cleaning.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-sky-400 font-bold">✓</span>
+              <span>pH-balanced snow foam pre-soak to loosen road grime safely.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-sky-400 font-bold">✓</span>
+              <span>Scratch-free two-bucket microfiber contact wash.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-sky-400 font-bold">✓</span>
+              <span>Paint-safe pressure rinse (stepped down to a clear-coat-safe 1,200 – 1,900 PSI using specialized #4.0 / #4.5 orifice nozzles).</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-sky-400 font-bold">✓</span>
+              <span>Microfiber towel dry, streak-free exterior glass cleaning, and sling-free satin tire dressing.</span>
+            </li>
+          </ul>
+        </div>
+
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 space-y-4">
+          <div class="inline-flex px-2.5 py-1 rounded-md bg-blue-500/15 text-blue-400 text-xs font-bold">
+            Package 2 Inclusions (Most Popular)
+          </div>
+          <h3 class="text-xl font-black text-white">Full Exterior + Express Interior ($140 – $220)</h3>
+          <ul class="space-y-2.5 text-xs sm:text-sm text-slate-300">
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 font-bold">✓</span>
+              <span><strong>Includes everything in the Exterior Foam Wash &amp; Seal</strong>, plus:</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 font-bold">✓</span>
+              <span>Thorough interior vacuuming of carpets, floor mats, seats, and trunk/cargo area.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 font-bold">✓</span>
+              <span>Detailed wipe-down of dashboard, center console, cupholders, steering column, and door panels.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 font-bold">✓</span>
+              <span>All-around door jamb degreasing and wipe-down.</span>
+            </li>
+            <li class="flex items-start gap-2">
+              <span class="text-blue-400 font-bold">✓</span>
+              <span>Streak-free interior windshield and window cleaning.</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- Auto Detailing Add-Ons Table -->
+      <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 shadow-sm space-y-4">
+        <h2 class="text-xl font-black text-white">Auto Detailing Add-Ons</h2>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 flex items-start justify-between gap-4">
+            <div>
+              <h3 class="text-sm font-bold text-white">Excessive Pet Hair / Heavy Sand &amp; Mud Removal</h3>
+              <p class="text-xs text-slate-400 mt-1">Deep extraction and brushing for heavily soiled interiors.</p>
+            </div>
+            <span class="text-base font-black text-blue-400 whitespace-nowrap">$40 – $60</span>
+          </div>
+          <div class="p-4 rounded-xl bg-slate-950 border border-slate-800 flex items-start justify-between gap-4">
+            <div>
+              <h3 class="text-sm font-bold text-white">Leather Cleaning &amp; Conditioning</h3>
+              <p class="text-xs text-slate-400 mt-1">Gentle pH-safe cleaning and UV-protective conditioning for leather seats.</p>
+            </div>
+            <span class="text-base font-black text-blue-400 whitespace-nowrap">$35</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ==================== PAGE: PRICING MENUS (Layout 2 Dedicated Page) ==================== -->
+    <section id="page-pricing" class="hidden max-w-6xl mx-auto px-4 py-12 space-y-12">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-sky-400">Upfront, Transparent Pricing</span>
+          <h1 class="text-3xl font-black text-white mt-1">Complete Service Price Menus &amp; Add-Ons</h1>
+          <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
+            Clear flat-rate tiers with no hidden fees. Text photos of your driveway or vehicle to <a href="tel:6575046183" class="text-sky-400 font-bold underline">(657) 504-6183</a> for a fast quote.
+          </p>
+        </div>
+        <button
+          type="button"
+          onclick="toggleRateEditor()"
+          class="self-start md:self-auto px-4 py-2 rounded-xl border border-slate-700 bg-slate-900 hover:bg-slate-800 text-xs font-bold text-slate-200"
+        >
+          Edit Price Tiers
+        </button>
+      </div>
+
+      <div class="space-y-4">
+        <div class="flex flex-wrap items-baseline justify-between gap-2">
+          <h2 class="text-xl font-black text-white flex items-center gap-2">
+            <span class="w-2.5 h-2.5 rounded-full bg-sky-400"></span>
+            1. Residential Concrete Pressure Washing ($125 Minimum • $0.20–$0.30/sq. ft.)
+          </h2>
+          <span class="text-xs text-amber-400 font-bold">$20 Off New Client / Patio &amp; Sidewalk Bundle Promo</span>
+        </div>
+        <div id="all-pw-pricing-grid" class="grid sm:grid-cols-2 lg:grid-cols-5 gap-4"></div>
+      </div>
+
+      <div class="space-y-4 pt-4">
+        <h2 class="text-xl font-black text-white flex items-center gap-2">
+          <span class="w-2.5 h-2.5 rounded-full bg-blue-400"></span>
+          2. Mobile Auto Detailing Matrix (Exterior Foam Wash vs. Full Exterior + Express Interior)
+        </h2>
+        <div id="all-dt-pricing-grid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      </div>
+    </section>
+
+    <!-- ==================== PAGE: REVIEWS & BEFORE/AFTERS (Layout 2 Dedicated Page) ==================== -->
+    <section id="page-reviews" class="hidden max-w-6xl mx-auto px-4 py-12 space-y-10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between gap-4 border-b border-slate-800 pb-6">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-sky-400">Results &amp; Proof</span>
+          <h1 class="text-3xl font-black text-white mt-1">Before &amp; Afters + Customer Reviews</h1>
+          <p class="text-slate-400 text-sm sm:text-base mt-2 max-w-2xl">
+            Filter by service to inspect before-and-after transformations and read client feedback across Grants Pass and the Rogue Valley.
+          </p>
+        </div>
+        <div class="inline-flex rounded-xl bg-slate-900 p-1 border border-slate-800">
+          <button
+            id="rev-filter-all"
+            type="button"
+            onclick="filterReviews('all')"
+            class="px-3 py-1.5 rounded-lg text-xs font-bold bg-sky-500 text-slate-950 shadow-sm"
+          >
+            All Services
+          </button>
+          <button
+            id="rev-filter-powerwash"
+            type="button"
+            onclick="filterReviews('powerwash')"
+            class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white"
+          >
+            Powerwashing
+          </button>
+          <button
+            id="rev-filter-detailing"
+            type="button"
+            onclick="filterReviews('detailing')"
+            class="px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white"
+          >
+            Auto Detailing
+          </button>
+        </div>
+      </div>
+
+      <div id="reviews-list-grid" class="grid md:grid-cols-2 gap-6">
+        <!-- Populated by renderReviews() -->
+      </div>
+    </section>
+
+    <!-- ==================== INLINE RATE CUSTOMIZER DRAWER ==================== -->
+    <section id="rate-editor-panel" class="hidden max-w-6xl mx-auto px-4 pb-12">
+      <div class="bg-slate-900 border border-amber-500/40 rounded-2xl p-6 space-y-4">
+        <div class="flex items-center justify-between">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-amber-400">Owner Sandbox Tool</span>
+            <h3 class="text-lg font-bold text-white">Live Rate &amp; Tier Customizer</h3>
+            <p class="text-xs text-slate-400">
+              All tiers are pre-loaded with your specification sheet numbers. Adjust any field below to preview changes live.
+            </p>
+          </div>
+          <button
+            type="button"
+            onclick="toggleRateEditor()"
+            class="text-xs font-bold text-slate-300 hover:text-white px-3 py-1.5 rounded-lg border border-slate-700 bg-slate-800"
+          >
+            Close Editor
+          </button>
+        </div>
+        <div id="rate-editor-inputs" class="grid sm:grid-cols-2 lg:grid-cols-4 gap-3"></div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Detailed Footer on Every Page -->
+  <footer class="bg-black text-slate-300 border-t border-slate-800 mt-auto">
+    <div class="max-w-6xl mx-auto px-4 py-12 grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="space-y-3">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-lg bg-sky-500 flex items-center justify-center text-slate-950 font-black text-sm">
+            BB
+          </div>
+          <span class="text-base font-black text-white">ByeByes Services</span>
+        </div>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          100% Mobile Residential Concrete Pressure Washing &amp; Auto Detailing serving Grants Pass, Oregon &amp; the surrounding Rogue Valley.
+        </p>
+        <div class="text-xs text-sky-400 font-bold">
+          Anthony Vallejo • Solo Owner-Operator
+        </div>
+      </div>
+
+      <div class="space-y-2.5">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-white">Direct Contact &amp; Social</h3>
+        <ul class="space-y-2 text-xs">
+          <li>
+            <span class="text-slate-500 block">Phone / Text Line (Fast Quotes):</span>
+            <a href="tel:6575046183" class="text-sky-400 hover:text-sky-300 font-extrabold text-sm">
+              (657) 504-6183
+            </a>
+          </li>
+          <li>
+            <span class="text-slate-500 block">Email:</span>
+            <a href="mailto:byebyesservices@gmail.com" class="text-slate-200 hover:text-sky-400 font-medium">
+              byebyesservices@gmail.com
+            </a>
+          </li>
+          <li>
+            <span class="text-slate-500 block">Instagram:</span>
+            <span class="text-slate-200 font-semibold">@byebyesservices</span>
+          </li>
+          <li>
+            <span class="text-slate-500 block">Service Area:</span>
+            <span class="text-slate-300">Grants Pass, OR &amp; Rogue Valley (100% Mobile)</span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="space-y-2.5">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-white">Licensing, Insurance &amp; Gear</h3>
+        <ul class="space-y-1.5 text-xs text-slate-400">
+          <li>• $1,000,000 General Liability / $2,000,000 Aggregate Policy</li>
+          <li>• $2,500 Inland Marine Equipment Coverage</li>
+          <li>• Operates within Oregon CCB Flatwork &amp; Detailing Exemptions</li>
+          <li>• DeWalt 3,400 PSI / 2.5 GPM + 15" Rotary Cleaner</li>
+          <li>• Clear-Coat-Safe #4.0 / #4.5 Orifice Nozzles</li>
+        </ul>
+      </div>
+
+      <div class="space-y-3">
+        <h3 class="text-xs font-bold uppercase tracking-wider text-white">Fast Photo Estimates</h3>
+        <p class="text-xs text-slate-400 leading-relaxed">
+          Text a photo of your driveway or vehicle to <strong class="text-white">(657) 504-6183</strong> or click below to request your estimate online.
+        </p>
+        <button
+          type="button"
+          onclick="openQuoteModal('Footer Quote Request')"
+          class="w-full py-2.5 px-4 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs font-black transition-colors"
+        >
+          Request a Quote Online
+        </button>
+      </div>
+    </div>
+    <div class="border-t border-slate-900 py-4 text-center text-xs text-slate-500">
+      © 2026 ByeByes Services (ByeBye's Services) • Anthony Vallejo • Grants Pass, Oregon
+    </div>
+  </footer>
+
+  <!-- Quote Request Modal -->
+  <div
+    id="quote-modal"
+    class="hidden fixed inset-0 z-50 bg-black/75 backdrop-blur-sm flex items-center justify-center p-4"
+  >
+    <div class="bg-slate-900 rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-700 space-y-4 text-slate-100">
+      <div class="flex items-center justify-between border-b border-slate-800 pb-3">
+        <div>
+          <span class="text-xs font-bold uppercase tracking-wider text-sky-400">Fast Free Estimate</span>
+          <h3 class="text-lg font-black text-white">Request a Quote from Anthony</h3>
+        </div>
+        <button
+          type="button"
+          onclick="closeQuoteModal()"
+          aria-label="Close modal"
+          class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800"
+        >
+          ✕
+        </button>
+      </div>
+
+      <div class="p-3 rounded-xl bg-sky-500/10 border border-sky-500/30 text-xs text-sky-200">
+        <strong>Tip:</strong> For the fastest quote, you can also call or text photos of your driveway or vehicle directly to <a href="tel:6575046183" class="underline font-bold">(657) 504-6183</a>.
+      </div>
+
+      <form id="quote-form" onsubmit="submitQuoteForm(event)" class="space-y-3.5">
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div>
+            <label for="q-name" class="block text-xs font-semibold text-slate-300 mb-1">Your Name *</label>
+            <input
+              id="q-name"
+              type="text"
+              required
+              placeholder="Your name"
+              class="w-full rounded-xl bg-slate-950 border border-slate-700 px-3 py-2 text-sm text-white focus:border-sky-500 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label for="q-client-type" class="block text-xs font-semibold text-slate-300 mb-1">Service Category</label>
+            <select
+              id="q-client-type"
+              class="w-full rounded-xl bg-slate-950 border border-slate-700 px-3 py-2 text-sm text-white focus:border-sky-500 focus:outline-none"
+            >
+              <option value="Residential Concrete Flatwork">Residential Concrete Flatwork</option>
+              <option value="Mobile Auto Detailing">Mobile Auto Detailing</option>
+              <option value="Driveway + Detailing Bundle ($20 Off)">Driveway + Detailing Bundle ($20 Off)</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div>
+            <label for="q-phone" class="block text-xs font-semibold text-slate-300 mb-1">Phone / Text Number *</label>
+            <input
+              id="q-phone"
+              type="tel"
+              required
+              placeholder="(541) 555-0199"
+              class="w-full rounded-xl bg-slate-950 border border-slate-700 px-3 py-2 text-sm text-white focus:border-sky-500 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label for="q-email" class="block text-xs font-semibold text-slate-300 mb-1">Email or Instagram</label>
+            <input
+              id="q-email"
+              type="text"
+              placeholder="you@example.com or @handle"
+              class="w-full rounded-xl bg-slate-950 border border-slate-700 px-3 py-2 text-sm text-white focus:border-sky-500 focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <div class="grid sm:grid-cols-2 gap-3">
+          <div>
+            <label for="q-service" class="block text-xs font-semibold text-slate-300 mb-1">Selected Package / Tier</label>
+            <input
+              id="q-service"
+              type="text"
+              required
+              class="w-full rounded-xl bg-slate-950 border border-slate-700 px-3 py-2 text-sm text-white focus:border-sky-500 focus:outline-none"
+            />
+          </div>
+          <div>
+            <label for="q-address" class="block text-xs font-semibold text-slate-300 mb-1">Location in Grants Pass / Rogue Valley</label>
+            <input
+              id="q-address"
+              type="text"
+              placeholder="Grants Pass, Medford, Ashland..."
+              class="w-full rounded-xl bg-slate-950 border border-slate-700 px-3 py-2 text-sm text-white focus:border-sky-500 focus:outline-none"
+            />
+          </div>
+        </div>
+
+        <div>
+          <label for="q-notes" class="block text-xs font-semibold text-slate-300 mb-1">Approximate Square Footage, Vehicle Model, or Add-Ons</label>
+          <textarea
+            id="q-notes"
+            rows="3"
+            placeholder="e.g., 600 sq ft 2-car driveway + SH biocide post-treatment, or Mid-Size SUV Full Exterior + Express Interior..."
+            class="w-full rounded-xl bg-slate-950 border border-slate-700 px-3 py-2 text-sm text-white focus:border-sky-500 focus:outline-none"
+          ></textarea>
+        </div>
+
+        <div class="flex items-center justify-end gap-2 pt-2">
+          <button
+            type="button"
+            onclick="closeQuoteModal()"
+            class="px-4 py-2 rounded-xl border border-slate-700 text-xs font-semibold text-slate-300 hover:bg-slate-800"
+          >
+            Cancel
+          </button>
+          <button
+            type="submit"
+            class="px-5 py-2 rounded-xl bg-sky-500 hover:bg-sky-400 text-slate-950 text-xs font-black shadow-sm"
+          >
+            Send Quote Request
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- In-Page Toast Notification -->
+  <div
+    id="toast-banner"
+    class="hidden fixed bottom-5 right-5 z-50 bg-sky-500 text-slate-950 px-4 py-3 rounded-xl shadow-2xl border border-sky-300 text-xs font-extrabold max-w-sm"
+  ></div>
+
+  <script>
+    // Complete specification state matching the user's exact specification sheet
+    const state = {
+      siteMode: 'service', // 'service' (Layout 1) or 'topic' (Layout 2)
+      activePage: 'home',  // 'home', 'powerwash', 'detailing', 'pricing', 'reviews'
+      reviewFilter: 'all',
+      powerwashTiers: [
+        {
+          id: 'pw-min',
+          title: 'Compact 1-Car Driveway',
+          size: '200 – 400 sq. ft.',
+          price: '$125',
+          note: 'Flat Minimum Trip / Base Charge (covers up to 400 sq. ft.)'
+        },
+        {
+          id: 'pw-std',
+          title: 'Standard 2-Car Driveway',
+          size: '450 – 650 sq. ft.',
+          price: '$135 – $175',
+          note: 'Includes pre-treatment, 15" rotary surface wash & curb rinse'
+        },
+        {
+          id: 'pw-lrg',
+          title: 'Expanded 2-Car / 3-Car Driveway',
+          size: '700 – 950 sq. ft.',
+          price: '$185 – $250',
+          note: 'Uniform 3,400 PSI rotary pass with zero zebra striping'
+        },
+        {
+          id: 'pw-comm',
+          title: 'Large Multi-Bay Driveway',
+          size: '1,000 – 1,400 sq. ft.',
+          price: '$260 – $375',
+          note: 'Ideal for large residential flatwork, patios & walkways'
+        },
+        {
+          id: 'pw-rural',
+          title: 'Extended / Rural Driveway',
+          size: '1,500+ sq. ft.',
+          price: '$300+',
+          note: 'Rated at $0.20 – $0.30 per sq. ft. via satellite or on-site measure'
+        }
+      ],
+      detailingTiers: [
+        {
+          id: 'dt-full',
+          title: 'Sedans & Coupes',
+          size: 'Compact & Standard Cars',
+          price: '$75–$85 Ext | $140–$160 Full',
+          note: 'Exterior Foam Wash & Seal ($75–$85) or Full Exterior + Express Interior ($140–$160)'
+        },
+        {
+          id: 'dt-retainer',
+          title: 'Mid-Size SUVs & Small Trucks',
+          size: 'Crossovers, Mid-SUVs & Light Pickups',
+          price: '$95–$105 Ext | $165–$185 Full',
+          note: 'Exterior Foam Wash & Seal ($95–$105) or Full Exterior + Express Interior ($165–$185)'
+        },
+        {
+          id: 'dt-suv',
+          title: 'Full-Size Trucks, 3-Row SUVs & Vans',
+          size: 'Large Trucks, 3-Row SUVs & Family Vans',
+          price: '$115–$130 Ext | $195–$220 Full',
+          note: 'Exterior Foam Wash & Seal ($115–$130) or Full Exterior + Express Interior ($195–$220)'
+        }
+      ],
+      reviews: [
+        {
+          id: 'rev-1',
+          service: 'powerwash',
+          serviceLabel: 'Standard 2-Car Driveway + SH Biocide',
+          client: 'Shelly • Grants Pass Homeowner',
+          rating: 5,
+          beforeAfterSummary: 'Before: Heavy PNW moss & slippery green algae → After: 15" rotary surface wash + 10% SH post-treat.',
+          quote: 'Anthony measured our driveway, pre-treated the moss, and used his rotary surface cleaner. Zero zebra stripes and the concrete looks brand new.'
+        },
+        {
+          id: 'rev-2',
+          service: 'detailing',
+          serviceLabel: 'Full Exterior + Express Interior (Mid-Size SUV)',
+          client: 'Rogue Valley Mobile Detailing Client',
+          rating: 5,
+          beforeAfterSummary: 'Before: Road film, brake dust & muddy mats → After: Snow foam wash, #4.0 nozzle safe rinse & full cabin reset.',
+          quote: 'Loved that Anthony came right to our driveway and hooked up to our spigot. The two-bucket wash and interior detail were spotless.'
+        },
+        {
+          id: 'rev-3',
+          service: 'powerwash',
+          serviceLabel: 'Expanded 3-Car Driveway & Oil Stain Remediation',
+          client: 'Tom • Residential Concrete Client',
+          rating: 5,
+          beforeAfterSummary: 'Before: Automotive fluid stains & dark grime → After: Commercial ZEP degreaser hot-scrub & 3,400 PSI rotary wash.',
+          quote: 'Texted photos of our driveway to (657) 504-6183 and got a clear quote right away. Working directly with the owner made the whole process easy.'
+        },
+        {
+          id: 'rev-4',
+          service: 'detailing',
+          serviceLabel: 'Full-Size Truck Detail + Pet Hair & Leather Add-On',
+          client: 'Grants Pass Truck Owner',
+          rating: 5,
+          beforeAfterSummary: 'Before: Heavy dog hair, mud & dry leather → After: Deep extraction brushing + pH-safe leather conditioning.',
+          quote: 'He got every bit of pet hair and mud out of the carpets and conditioned the leather seats. Upfront pricing with zero surprises.'
+        }
+      ]
+    };
+
+    function showToast(message) {
+      const toast = document.getElementById('toast-banner');
+      if (!toast) return;
+      toast.textContent = message;
+      toast.classList.remove('hidden');
+      if (window._toastTimer) clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3600);
+    }
+
+    function copyEmailToClipboard() {
+      const email = 'byebyesservices@gmail.com';
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email).then(() => {
+            showToast('Copied byebyesservices@gmail.com to clipboard!');
+          }).catch(() => fallbackCopy(email));
+        } else {
+          fallbackCopy(email);
+        }
+      } catch (e) {
+        fallbackCopy(email);
+      }
+    }
+
+    function fallbackCopy(text) {
+      const temp = document.createElement('textarea');
+      temp.value = text;
+      document.body.appendChild(temp);
+      temp.select();
+      try {
+        document.execCommand('copy');
+        showToast('Copied ' + text + ' to clipboard!');
+      } catch (err) {
+        showToast('Email: ' + text);
+      }
+      document.body.removeChild(temp);
+    }
+
+    function setSiteMode(mode) {
+      state.siteMode = mode;
+      const btnService = document.getElementById('btn-mode-service');
+      const btnTopic = document.getElementById('btn-mode-topic');
+      if (mode === 'service') {
+        btnService.className = 'px-2.5 py-1 rounded-md text-xs font-semibold transition-colors bg-sky-500 text-slate-950';
+        btnTopic.className = 'px-2.5 py-1 rounded-md text-xs font-semibold transition-colors text-slate-300 hover:text-white';
+        if (state.activePage === 'pricing' || state.activePage === 'reviews') {
+          state.activePage = 'home';
+        }
+      } else {
+        btnTopic.className = 'px-2.5 py-1 rounded-md text-xs font-semibold transition-colors bg-sky-500 text-slate-950';
+        btnService.className = 'px-2.5 py-1 rounded-md text-xs font-semibold transition-colors text-slate-300 hover:text-white';
+        if (state.activePage === 'powerwash' || state.activePage === 'detailing') {
+          state.activePage = 'home';
+        }
+      }
+      renderNav();
+      renderActivePage();
+      showToast(
+        mode === 'service'
+          ? 'Switched to Layout 1: Home / Powerwashing / Auto Detailing'
+          : 'Switched to Layout 2: Home / Pricing Menus / Before & Afters'
+      );
+    }
+
+    function getNavItems() {
+      if (state.siteMode === 'service') {
+        return [
+          { id: 'home', label: 'Home' },
+          { id: 'powerwash', label: 'Powerwashing' },
+          { id: 'detailing', label: 'Auto Detailing' }
+        ];
+      }
+      return [
+        { id: 'home', label: 'Home' },
+        { id: 'pricing', label: 'Pricing Menus' },
+        { id: 'reviews', label: 'Before & Afters / Reviews' }
+      ];
+    }
+
+    function renderNav() {
+      const desktopNav = document.getElementById('main-nav-links');
+      const mobileNav = document.getElementById('mobile-nav-links');
+      const items = getNavItems();
+
+      desktopNav.innerHTML = items.map(item => {
+        const active = state.activePage === item.id;
+        return `<button
+          type="button"
+          onclick="navigatePage('${item.id}')"
+          class="px-3.5 py-2 rounded-xl text-sm font-bold transition-colors ${
+            active
+              ? 'bg-sky-500/20 text-sky-400 border border-sky-500/30'
+              : 'text-slate-300 hover:text-white hover:bg-slate-900'
+          }"
+        >${item.label}</button>`;
+      }).join('');
+
+      mobileNav.innerHTML = items.map(item => {
+        const active = state.activePage === item.id;
+        return `<button
+          type="button"
+          onclick="navigatePage('${item.id}'); toggleMobileMenu(false);"
+          class="w-full text-left px-3 py-2 rounded-lg text-sm font-bold ${
+            active ? 'bg-sky-500/20 text-sky-400' : 'text-slate-300 hover:bg-slate-800'
+          }"
+        >${item.label}</button>`;
+      }).join('');
+
+      const pwBadge = document.getElementById('home-pw-badge');
+      const dtBadge = document.getElementById('home-dt-badge');
+      if (pwBadge && dtBadge) {
+        if (state.siteMode === 'topic') {
+          pwBadge.textContent = 'Ground-Level Residential Flatwork Concrete Cleaning';
+          dtBadge.textContent = '100% Mobile Interior & Exterior Auto Detailing';
+        } else {
+          pwBadge.textContent = '$125 Min • 2-Car Driveways $135–$175';
+          dtBadge.textContent = 'Sedans from $75 • Full In+Out from $140';
+        }
+      }
+    }
+
+    function navigatePage(pageId) {
+      state.activePage = pageId;
+      renderNav();
+      renderActivePage();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function openServiceDetail(serviceKey) {
+      if (state.siteMode === 'service') {
+        navigatePage(serviceKey);
+      } else {
+        navigatePage('pricing');
+      }
+    }
+
+    function handlePrimaryServiceExplore() {
+      if (state.siteMode === 'service') {
+        navigatePage('powerwash');
+      } else {
+        navigatePage('reviews');
+      }
+    }
+
+    function navigateToReviewsOrPowerwash() {
+      if (state.siteMode === 'service') {
+        navigatePage('powerwash');
+      } else {
+        navigatePage('reviews');
+      }
+    }
+
+    function renderActivePage() {
+      const pages = ['home', 'powerwash', 'detailing', 'pricing', 'reviews'];
+      pages.forEach(p => {
+        const el = document.getElementById('page-' + p);
+        if (el) {
+          if (p === state.activePage) {
+            el.classList.remove('hidden');
+          } else {
+            el.classList.add('hidden');
+          }
+        }
+      });
+    }
+
+    function toggleMobileMenu(forceState) {
+      const drawer = document.getElementById('mobile-menu-drawer');
+      if (!drawer) return;
+      if (typeof forceState === 'boolean') {
+        drawer.classList.toggle('hidden', !forceState);
+      } else {
+        drawer.classList.toggle('hidden');
+      }
+    }
+
+    function updateBeforeAfter(prefix, val) {
+      const clip = document.getElementById(prefix + '-before-clip');
+      const line = document.getElementById(prefix + '-divider-line');
+      if (clip) clip.style.width = val + '%';
+      if (line) line.style.left = val + '%';
+    }
+
+    function switchCalcTab(tab) {
+      const pwTab = document.getElementById('calc-tab-pw');
+      const dtTab = document.getElementById('calc-tab-dt');
+      const pwView = document.getElementById('calc-view-pw');
+      const dtView = document.getElementById('calc-view-dt');
+      if (tab === 'pw') {
+        pwTab.className = 'px-3.5 py-2 rounded-lg text-xs font-bold bg-sky-500 text-slate-950';
+        dtTab.className = 'px-3.5 py-2 rounded-lg text-xs font-bold text-slate-400 hover:text-white';
+        pwView.classList.remove('hidden');
+        dtView.classList.add('hidden');
+      } else {
+        dtTab.className = 'px-3.5 py-2 rounded-lg text-xs font-bold bg-blue-500 text-slate-950';
+        pwTab.className = 'px-3.5 py-2 rounded-lg text-xs font-bold text-slate-400 hover:text-white';
+        dtView.classList.remove('hidden');
+        pwView.classList.add('hidden');
+      }
+    }
+
+    function updateCalculator() {
+      // Concrete Calculator
+      const pwRanges = [
+        { label: 'Compact 1-Car Driveway (200–400 sq. ft.)', min: 125, max: 125 },
+        { label: 'Standard 2-Car Driveway (450–650 sq. ft.)', min: 135, max: 175 },
+        { label: 'Expanded 2-Car / 3-Car Driveway (700–950 sq. ft.)', min: 185, max: 250 },
+        { label: 'Large Multi-Bay Driveway (1,000–1,400 sq. ft.)', min: 260, max: 375 },
+        { label: 'Extended / Rural Driveway (1,500+ sq. ft.)', min: 300, max: 450 }
+      ];
+      const pwIdx = parseInt(document.getElementById('calc-pw-tier')?.value || '1', 10);
+      const selectedPw = pwRanges[pwIdx] || pwRanges[1];
+      let pwMin = selectedPw.min;
+      let pwMax = selectedPw.max;
+      const addons = [];
+
+      if (document.getElementById('addon-sh')?.checked) {
+        pwMin += 25;
+        pwMax += 35;
+        addons.push('Post-Wash 10% SH Biocide');
+      }
+      if (document.getElementById('addon-oil')?.checked) {
+        pwMin += 25;
+        pwMax += 50;
+        addons.push('ZEP Oil & Grease Remediation');
+      }
+      if (document.getElementById('addon-rust')?.checked) {
+        pwMin += 40;
+        pwMax += 75;
+        addons.push('Rust & Fertilizer Stain Removal');
+      }
+      if (document.getElementById('addon-promo-pw')?.checked) {
+        pwMin = Math.max(125, pwMin - 20);
+        pwMax = Math.max(125, pwMax - 20);
+        addons.push('$20 Off New Client/Bundle Promo ($125 min floor applies)');
+      }
+
+      const pwResultEl = document.getElementById('calc-pw-result');
+      const pwSummaryEl = document.getElementById('calc-pw-summary');
+      if (pwResultEl && pwSummaryEl) {
+        pwResultEl.textContent = pwMin === pwMax ? `$${pwMin}` : `$${pwMin} – $${pwMax}`;
+        pwSummaryEl.textContent = selectedPw.label + (addons.length ? ' + ' + addons.join(', ') : ' • Standard 4-step rotary concrete restoration.');
+      }
+
+      // Detailing Calculator
+      const dtMatrix = [
+        { label: 'Sedans & Coupes', ext: [75, 85], full: [140, 160] },
+        { label: 'Mid-Size SUVs & Small Trucks', ext: [95, 105], full: [165, 185] },
+        { label: 'Full-Size Trucks, 3-Row SUVs & Vans', ext: [115, 130], full: [195, 220] }
+      ];
+      const dtSizeIdx = parseInt(document.getElementById('calc-dt-size')?.value || '1', 10);
+      const dtPkg = document.getElementById('calc-dt-pkg')?.value || 'full';
+      const selectedDt = dtMatrix[dtSizeIdx] || dtMatrix[1];
+      const basePair = dtPkg === 'ext' ? selectedDt.ext : selectedDt.full;
+      let dtMin = basePair[0];
+      let dtMax = basePair[1];
+      const dtAddons = [];
+
+      if (document.getElementById('addon-pethair')?.checked) {
+        dtMin += 40;
+        dtMax += 60;
+        dtAddons.push('Pet Hair / Heavy Sand & Mud Removal');
+      }
+      if (document.getElementById('addon-leather')?.checked) {
+        dtMin += 35;
+        dtMax += 35;
+        dtAddons.push('Leather Cleaning & Conditioning');
+      }
+
+      const dtResultEl = document.getElementById('calc-dt-result');
+      const dtSummaryEl = document.getElementById('calc-dt-summary');
+      if (dtResultEl && dtSummaryEl) {
+        dtResultEl.textContent = `$${dtMin} – $${dtMax}`;
+        const pkgName = dtPkg === 'ext' ? 'Exterior Foam Wash & Seal' : 'Full Exterior + Express Interior';
+        dtSummaryEl.textContent = `${selectedDt.label} • ${pkgName}` + (dtAddons.length ? ' + ' + dtAddons.join(', ') : '');
+      }
+    }
+
+    function bookCalculatedQuote(type) {
+      if (type === 'pw') {
+        const res = document.getElementById('calc-pw-result')?.textContent || '';
+        const sum = document.getElementById('calc-pw-summary')?.textContent || '';
+        openQuoteModal(`Concrete Flatwork (${res})`);
+        const notes = document.getElementById('q-notes');
+        if (notes) notes.value = sum;
+      } else {
+        const res = document.getElementById('calc-dt-result')?.textContent || '';
+        const sum = document.getElementById('calc-dt-summary')?.textContent || '';
+        openQuoteModal(`Mobile Auto Detailing (${res})`);
+        const notes = document.getElementById('q-notes');
+        if (notes) notes.value = sum;
+      }
+    }
+
+    function createCardHTML(tier, accent) {
+      const btnClass = accent === 'blue'
+        ? 'bg-blue-500/20 text-blue-300 hover:bg-blue-500/30 border border-blue-500/30'
+        : 'bg-sky-500/20 text-sky-300 hover:bg-sky-500/30 border border-sky-500/30';
+      return `<div class="rounded-xl border border-slate-800 p-5 flex flex-col justify-between bg-slate-950 hover:border-slate-700 transition-colors">
+        <div>
+          <div class="text-xs font-bold text-sky-400">${tier.size}</div>
+          <h3 class="font-bold text-white text-base mt-1">${tier.title}</h3>
+          <div class="text-xl font-black text-white mt-3">${tier.price}</div>
+          <p class="text-xs text-slate-400 mt-2 leading-relaxed">${tier.note}</p>
+        </div>
+        <button
+          type="button"
+          onclick="openQuoteModal('${tier.title} (${tier.price})')"
+          class="mt-4 w-full py-2 px-3 rounded-lg text-xs font-bold transition-colors ${btnClass}"
+        >
+          Select &amp; Request Quote
+        </button>
+      </div>`;
+    }
+
+    function renderPricingCards() {
+      const pwHTML = state.powerwashTiers.map(t => createCardHTML(t, 'sky')).join('');
+      const dtHTML = state.detailingTiers.map(t => createCardHTML(t, 'blue')).join('');
+
+      const pwGrid = document.getElementById('pw-pricing-grid');
+      const dtGrid = document.getElementById('dt-pricing-grid');
+      const allPwGrid = document.getElementById('all-pw-pricing-grid');
+      const allDtGrid = document.getElementById('all-dt-pricing-grid');
+
+      if (pwGrid) pwGrid.innerHTML = pwHTML;
+      if (dtGrid) dtGrid.innerHTML = dtHTML;
+      if (allPwGrid) allPwGrid.innerHTML = pwHTML;
+      if (allDtGrid) allDtGrid.innerHTML = dtHTML;
+    }
+
+    function toggleRateEditor() {
+      const panel = document.getElementById('rate-editor-panel');
+      if (!panel) return;
+      panel.classList.toggle('hidden');
+      if (!panel.classList.contains('hidden')) {
+        renderRateEditorInputs();
+        panel.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      }
+    }
+
+    function renderRateEditorInputs() {
+      const container = document.getElementById('rate-editor-inputs');
+      if (!container) return;
+      const allTiers = [
+        ...state.powerwashTiers.map((t, i) => ({ ...t, group: 'pw', idx: i })),
+        ...state.detailingTiers.map((t, i) => ({ ...t, group: 'dt', idx: i }))
+      ];
+      container.innerHTML = allTiers.map(item => `
+        <div class="bg-slate-950 p-3 rounded-xl border border-slate-800 space-y-1.5">
+          <div class="text-xs font-bold text-white truncate">${item.title}</div>
+          <input
+            type="text"
+            value="${item.price}"
+            aria-label="Price for ${item.title}"
+            oninput="updateTierPrice('${item.group}', ${item.idx}, this.value)"
+            class="w-full rounded-lg bg-slate-900 border border-slate-700 px-2.5 py-1 text-xs font-bold text-sky-400"
+          />
+          <input
+            type="text"
+            value="${item.size}"
+            aria-label="Size description for ${item.title}"
+            oninput="updateTierSize('${item.group}', ${item.idx}, this.value)"
+            class="w-full rounded-lg bg-slate-900 border border-slate-800 px-2.5 py-1 text-[11px] text-slate-400"
+          />
+        </div>
+      `).join('');
+    }
+
+    function updateTierPrice(group, idx, newPrice) {
+      if (group === 'pw' && state.powerwashTiers[idx]) {
+        state.powerwashTiers[idx].price = newPrice;
+      } else if (group === 'dt' && state.detailingTiers[idx]) {
+        state.detailingTiers[idx].price = newPrice;
+      }
+      renderPricingCards();
+    }
+
+    function updateTierSize(group, idx, newSize) {
+      if (group === 'pw' && state.powerwashTiers[idx]) {
+        state.powerwashTiers[idx].size = newSize;
+      } else if (group === 'dt' && state.detailingTiers[idx]) {
+        state.detailingTiers[idx].size = newSize;
+      }
+      renderPricingCards();
+    }
+
+    function filterReviews(category) {
+      state.reviewFilter = category;
+      ['all', 'powerwash', 'detailing'].forEach(cat => {
+        const btn = document.getElementById('rev-filter-' + cat);
+        if (btn) {
+          btn.className = cat === category
+            ? 'px-3 py-1.5 rounded-lg text-xs font-bold bg-sky-500 text-slate-950 shadow-sm'
+            : 'px-3 py-1.5 rounded-lg text-xs font-bold text-slate-400 hover:text-white';
+        }
+      });
+      renderReviews();
+    }
+
+    function renderReviews() {
+      const container = document.getElementById('reviews-list-grid');
+      if (!container) return;
+      const list = state.reviewFilter === 'all'
+        ? state.reviews
+        : state.reviews.filter(r => r.service === state.reviewFilter);
+
+      container.innerHTML = list.map(r => `
+        <div class="bg-slate-900 rounded-2xl border border-slate-800 p-6 shadow-sm flex flex-col justify-between space-y-4">
+          <div class="space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="px-2.5 py-1 rounded-full text-xs font-bold ${
+                r.service === 'powerwash' ? 'bg-sky-500/20 text-sky-300' : 'bg-blue-500/20 text-blue-300'
+              }">${r.serviceLabel}</span>
+              <span class="text-amber-400 text-sm">★★★★★</span>
+            </div>
+            <div class="p-3 rounded-xl bg-slate-950 border border-slate-800 text-xs text-slate-300 font-medium">
+              ${r.beforeAfterSummary}
+            </div>
+            <p class="text-sm text-slate-300 leading-relaxed">"${r.quote}"</p>
+          </div>
+          <div class="pt-3 border-t border-slate-800 flex items-center justify-between text-xs text-slate-400">
+            <span class="font-bold text-white">${r.client}</span>
+            <span>Grants Pass / Rogue Valley</span>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function openQuoteModal(defaultService) {
+      const modal = document.getElementById('quote-modal');
+      const serviceInput = document.getElementById('q-service');
+      if (serviceInput) serviceInput.value = defaultService || 'General Service Inquiry';
+      if (modal) modal.classList.remove('hidden');
+    }
+
+    function closeQuoteModal() {
+      const modal = document.getElementById('quote-modal');
+      if (modal) modal.classList.add('hidden');
+    }
+
+    function submitQuoteForm(e) {
+      e.preventDefault();
+      const name = document.getElementById('q-name').value.trim();
+      const service = document.getElementById('q-service').value.trim();
+      closeQuoteModal();
+      e.target.reset();
+      showToast('Thanks ' + name + '! Your quote request for ' + service + ' is ready—or text photos to (657) 504-6183.');
+    }
+
+    // Initialize on load
+    window.addEventListener('DOMContentLoaded', () => {
+      renderNav();
+      renderPricingCards();
+      renderReviews();
+      updateCalculator();
+      renderActivePage();
+    });
+  </script>
+</body>
+</html>
